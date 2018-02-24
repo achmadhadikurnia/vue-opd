@@ -1,0 +1,22 @@
+[
+  {
+    "xAxis": {
+      "category": "opd",
+      "region": "Provinsi",
+      "name": "Banten",
+      "opd": "Dindik",
+      "data": [
+        "Anggaran",
+        "Realisasi"
+      ]
+    },
+    "series": [
+      {
+        "data": [
+          1472743026394,1336405639551 
+
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,61 @@
+[
+  {
+    "xAxis": {
+      "type": "opd",
+      "region": "Provinsi",
+      "name": "Banten",
+      "yyyy": "2012",
+      "index": "Banten-2012"
+    },
+    "series": [
+      {
+        "data": [
+          {"value":1472743026394,"name":"Dindik"},
+          {"value":125231681550,"name":"Dinkes"},
+          {"value":150085031245,"name":"RSUD Malingping"},
+          {"value":135203179895,"name":"RSUD Banten"},
+          {"value":1028620564684,"name":"DPUPR"},
+          {"value":274905604638,"name":"DPRKP"},
+          {"value":24316309000,"name":"Kesbangpol"},
+          {"value":41000621500,"name":"SatpoPP"},
+          {"value":32118393500,"name":"BPBD"},
+          {"value":64095926595,"name":"Dinsos"},
+          {"value":95137430600,"name":"Disnaker"},
+          {"value":29487049800,"name":"DP3AKKB"},
+          {"value":21329995000,"name":"Ketapang"},
+          {"value":78798394750,"name":"DLHK"},
+          {"value":14265192800,"name":"DPMD"},
+          {"value":78467428215,"name":"Dishub"},
+          {"value":46256256153,"name":"Kominfo"},
+          {"value":26700559550,"name":"Dinkop"},
+          {"value":35265996750,"name":"DPMPTSP"},
+          {"value":51270553900,"name":"Dispora"},
+          {"value":32872438150,"name":"Perpus"},
+          {"value":39544190550,"name":"DKP"},
+          {"value":34069904470,"name":"Dispar"},
+          {"value":80053871724,"name":"Distan"},
+          {"value":46286526000,"name":"DESDM"},
+          {"value":34453700775,"name":"Disperindag"},
+          {"value":253826009160,"name":"Setwan"},
+          {"value":5302390200,"name":"B pem"},
+          {"value":6097245500,"name":"B Hukum"},
+          {"value":5197374369,"name":"B organisasi"},
+          {"value":3726543000,"name":"B Bina Perekonomian"},
+          {"value":21179212500,"name":"B Kesra"},
+          {"value":232335153295,"name":"B umum"},
+          {"value":2189999000,"name":"B Bisda"},
+          {"value":10787440000,"name":"B Adpem"},
+          {"value":42356419550,"name":"B ARTP"},
+          {"value":12413240000,"name":"Penghubung"},
+          {"value":45181308100,"name":"Inspektorat"},
+          {"value":63317356400,"name":"Bappeda"},
+          {"value":5453060672431,"name":"Bapenda+PPKD"},
+          {"value":38406256600,"name":"BPKAD+PPKD"},
+          {"value":25833227500,"name":"BKD"},
+          {"value":53918300152,"name":"BPSDMD"},
+          {"value":56838000000,"name":"DPRD+(KD-WKD)"}
+        ]
+      }
+    ]
+  }
+]
