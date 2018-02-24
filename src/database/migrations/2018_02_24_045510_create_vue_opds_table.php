@@ -23,8 +23,8 @@ class CreateVueOpdsTable extends Migration
             $table->string('njab');
             $table->string('npej');
             NestedSet::columns($table);
-			$table->timestamps();
-			$table->softDeletes();
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->primary('id');
 		});
