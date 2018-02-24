@@ -38,34 +38,7 @@ class VueOpdController extends Controller
      */
     public function index(Request $request)
     {
-        if (request()->has('sort')) {
-            list($sortCol, $sortDir) = explode('|', request()->sort);
-
-            $query = $this->vue_opd->orderBy($sortCol, $sortDir);
-        } else {
-            $query = $this->vue_opd->orderBy('id', 'asc');
-        }
-
-        if ($request->exists('filter')) {
-            $query->where(function($q) use($request) {
-                $value = "%{$request->filter}%";
-                $q->where('id', 'like', $value)
-                    ->orWhere('kunker', 'like', $value)
-                    ->orWhere('name', 'like', $value)
-                    ->orWhere('kunker_sinjab', 'like', $value)
-                    ->orWhere('kunker_simral', 'like', $value)
-                    ->orWhere('levelunker', 'like', $value)
-                    ->orWhere('njab', 'like', $value)
-                    ->orWhere('npej', 'like', $value);
-            });
-        }
-
-        $perPage = request()->has('per_page') ? (int) request()->per_page : null;
-        $response = $query->paginate($perPage);
-
-        return response()->json($response)
-            ->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'GET');
+        //
     }
 
     /**
