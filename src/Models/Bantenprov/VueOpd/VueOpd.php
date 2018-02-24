@@ -9,6 +9,7 @@ class VueOpd extends Model
 {
     use SoftDeletes;
 
+    public $incrementing = false;
     public $timestamps = true;
 
     protected $table = 'vue_opds';
