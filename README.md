@@ -182,91 +182,91 @@ $ php artisan db:seed --class=BantenprovVueOpdSeeder
             }
         },
         {
-            path: '/admin/vue-opd/root',
+            path: '/admin/vue-opd-root',
             components: {
-                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.index.vue'], resolve),
+                main: resolve => require(['./components/bantenprov/vue-opd/root/VueOpdRoot.index.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
                 sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
             },
             meta: {
-                title: "Vue OPD"
+                title: "Vue OPD Root"
             }
         },
         {
-            path: '/admin/vue-opd/root/create',
+            path: '/admin/vue-opd-root/create',
             components: {
-                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.add.vue'], resolve),
+                main: resolve => require(['./components/bantenprov/vue-opd/root/VueOpdRoot.add.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
                 sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
             },
             meta: {
-                title: "Add Vue OPD"
+                title: "Add Vue OPD Root"
             }
         },
         {
-            path: '/admin/vue-opd/root/:id',
+            path: '/admin/vue-opd-root/:id',
             components: {
-                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.show.vue'], resolve),
+                main: resolve => require(['./components/bantenprov/vue-opd/root/VueOpdRoot.show.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
                 sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
             },
             meta: {
-                title: "View Vue OPD"
+                title: "View Vue OPD Root"
             }
         },
         {
-            path: '/admin/vue-opd/root/:id/edit',
+            path: '/admin/vue-opd-root/:id/edit',
             components: {
-                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.edit.vue'], resolve),
+                main: resolve => require(['./components/bantenprov/vue-opd/root/VueOpdRoot.edit.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
                 sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
             },
             meta: {
-                title: "Edit Vue OPD"
+                title: "Edit Vue OPD Root"
             }
         },
         {
-            path: '/admin/vue-opd/child',
+            path: '/admin/vue-opd-child',
             components: {
-                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.index.vue'], resolve),
+                main: resolve => require(['./components/bantenprov/vue-opd/root/VueOpdChild.index.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
                 sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
             },
             meta: {
-                title: "Vue OPD"
+                title: "Vue OPD Child"
             }
         },
         {
-            path: '/admin/vue-opd/child/create',
+            path: '/admin/vue-opd-child/create',
             components: {
-                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.add.vue'], resolve),
+                main: resolve => require(['./components/bantenprov/vue-opd/root/VueOpdChild.add.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
                 sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
             },
             meta: {
-                title: "Add Vue OPD"
+                title: "Add Vue OPD Child"
             }
         },
         {
-            path: '/admin/vue-opd/child/:id',
+            path: '/admin/vue-opd-child/:id',
             components: {
-                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.show.vue'], resolve),
+                main: resolve => require(['./components/bantenprov/vue-opd/root/VueOpdChild.show.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
                 sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
             },
             meta: {
-                title: "View Vue OPD"
+                title: "View Vue OPD Child"
             }
         },
         {
-            path: '/admin/vue-opd/child/:id/edit',
+            path: '/admin/vue-opd-child/:id/edit',
             components: {
-                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.edit.vue'], resolve),
+                main: resolve => require(['./components/bantenprov/vue-opd/root/VueOpdChild.edit.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
                 sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
             },
             meta: {
-                title: "Edit Vue OPD"
+                title: "Edit Vue OPD Child"
             }
         },
         //== ...
