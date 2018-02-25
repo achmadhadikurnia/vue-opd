@@ -20,6 +20,26 @@ Route::group(['prefix' => 'api/vue-opd', 'middleware' => ['web']], function() {
     Route::delete('/{id}',      $controllers->destroy)->name('vue-opd.destroy');
 });
 
+Route::group(['prefix' => 'api/vue-opd/root', 'middleware' => ['web']], function() {
+    $controllers = (object) [
+        'index'     => 'Bantenprov\VueOpd\Http\Controllers\VueOpdRootController@index',
+        'create'    => 'Bantenprov\VueOpd\Http\Controllers\VueOpdRootController@create',
+        'store'     => 'Bantenprov\VueOpd\Http\Controllers\VueOpdRootController@store',
+        'show'      => 'Bantenprov\VueOpd\Http\Controllers\VueOpdRootController@show',
+        'edit'      => 'Bantenprov\VueOpd\Http\Controllers\VueOpdRootController@edit',
+        'update'    => 'Bantenprov\VueOpd\Http\Controllers\VueOpdRootController@update',
+        'destroy'   => 'Bantenprov\VueOpd\Http\Controllers\VueOpdRootController@destroy',
+    ];
+
+    Route::get('/',             $controllers->index)->name('vue-opd.root.index');
+    Route::get('/create',       $controllers->create)->name('vue-opd.root.create');
+    Route::post('/',            $controllers->store)->name('vue-opd.root.store');
+    Route::get('/{id}',         $controllers->show)->name('vue-opd.root.show');
+    Route::get('/{id}/edit',    $controllers->edit)->name('vue-opd.root.edit');
+    Route::put('/{id}',         $controllers->update)->name('vue-opd.root.update');
+    Route::delete('/{id}',      $controllers->destroy)->name('vue-opd.root.destroy');
+});
+
 Route::group(['prefix' => 'api/vue-opd/child', 'middleware' => ['web']], function() {
     $controllers = (object) [
         'index'     => 'Bantenprov\VueOpd\Http\Controllers\VueOpdChildController@index',

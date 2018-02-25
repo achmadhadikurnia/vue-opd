@@ -14,12 +14,12 @@ use Bantenprov\VueOpd\Models\Bantenprov\VueOpd\VueOpd;
 use Validator;
 
 /**
- * The VueOpdChildController class.
+ * The VueOpdRootController class.
  *
  * @package Bantenprov\VueOpd
  * @author  bantenprov <developer.bantenprov@gmail.com>
  */
-class VueOpdChildController extends Controller
+class VueOpdRootController extends Controller
 {
     /**
      * Create a new controller instance.
