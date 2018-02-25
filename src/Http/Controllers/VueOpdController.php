@@ -77,10 +77,30 @@ class VueOpdController extends Controller
     {
         $vue_opd = $this->vue_opd;
 
+        if ($id == null) {
+            $vue_opd->id = null;
+            $vue_opd->kunker = null;
+            $vue_opd->name = null;
+            $vue_opd->kunker_sinjab = null;
+            $vue_opd->kunker_simral = null;
+            $vue_opd->levelunker = 1;
+            $vue_opd->njab = null;
+            $vue_opd->npej = null;
+        } else {
+            $vue_opd->id = null;
+            $vue_opd->kunker = null;
+            $vue_opd->name = null;
+            $vue_opd->kunker_sinjab = null;
+            $vue_opd->kunker_simral = null;
+            $vue_opd->levelunker = $this->vue_opd->findOrFail($id)->levelunker + 1;
+            $vue_opd->njab = null;
+            $vue_opd->npej = null;
+        }
+
         $response['vue_opd'] = $vue_opd;
         $response['status'] = true;
 
-        return response()->json($vue_opd);
+        return response()->json($response);
     }
 
     /**
