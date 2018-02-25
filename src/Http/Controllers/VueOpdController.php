@@ -73,7 +73,7 @@ class VueOpdController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id = null)
     {
         $vue_opd = $this->vue_opd;
 
