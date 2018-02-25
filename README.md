@@ -35,28 +35,56 @@ $ git clone https://github.com/bantenprov/vue-opd.git
 'providers' => [
 
     /*
-    * Laravel Framework Service Providers...
-    */
-    Illuminate\Auth\AuthServiceProvider::class,
-    Illuminate\Broadcasting\BroadcastServiceProvider::class,
-    Illuminate\Bus\BusServiceProvider::class,
-    Illuminate\Cache\CacheServiceProvider::class,
-    Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-    Illuminate\Cookie\CookieServiceProvider::class,
+     * Package Service Providers...
+     */
+    Laravel\Tinker\TinkerServiceProvider::class,
     //....
     Bantenprov\VueOpd\VueOpdServiceProvider::class,
+    Emadadly\LaravelUuid\LaravelUuidServiceProvider::class,
 ```
 
-#### Lakukan migrate :
+```php
+'aliases' => [
 
-```bash
-$ php artisan migrate
+    'App' => Illuminate\Support\Facades\App::class,
+    'Artisan' => Illuminate\Support\Facades\Artisan::class,
+    'Auth' => Illuminate\Support\Facades\Auth::class,
+    'Blade' => Illuminate\Support\Facades\Blade::class,
+    'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
+    ...
+    'Opd' => Bantenprov\LaravelOpd\Facades\LaravelOpd::class,
 ```
 
-#### Publish database seeder :
+#### Publish vendor :
 
 ```bash
 $ php artisan vendor:publish --tag=vue-opd-seeds
+$ php artisan vendor:publish --tag=vue-opd-assets
+$ php artisan vendor:publish --tag=vue-opd-public
+$ php artisan vendor:publish --provider="Emadadly\LaravelUuid\LaravelUuidServiceProvider"
+```
+
+#### Edit config/uuid.php
+
+Change `'default_uuid_column' => 'uuid'` to `'default_uuid_column' => 'id'` like this
+
+```php
+'default_uuid_column' => 'id',
+```
+
+### Edit "vendor/kalnoy/nestedset/src/NestedSet.php"
+
+Change `$table->unsignedInteger(self::PARENT_ID)->nullable();` to `$table->string(self::PARENT_ID)->nullable();` like this
+
+```php
+public static function columns(Blueprint $table)
+{
+    $table->unsignedInteger(self::LFT)->default(0);
+    $table->unsignedInteger(self::RGT)->default(0);
+    $table->string(self::PARENT_ID)->nullable();
+
+    $table->index(static::getDefaultColumns());
+}
 ```
 
 #### Lakukan auto dump :
@@ -65,18 +93,18 @@ $ php artisan vendor:publish --tag=vue-opd-seeds
 $ composer dump-autoload
 ```
 
+#### Lakukan migrate :
+
+```bash
+$ php artisan migrate
+```
+
 #### Lakukan seeding :
 
 ```bash
 $ php artisan db:seed --class=BantenprovVueOpdSeeder
 ```
 
-#### Lakukan publish component vue :
-
-```bash
-$ php artisan vendor:publish --tag=vue-opd-assets
-$ php artisan vendor:publish --tag=vue-opd-public
-```
 #### Tambahkan route di dalam file : `resources/assets/js/routes.js` :
 
 ```javascript
@@ -144,6 +172,94 @@ $ php artisan vendor:publish --tag=vue-opd-public
         },
         {
             path: '/admin/vue-opd/:id/edit',
+            components: {
+                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.edit.vue'], resolve),
+                navbar: resolve => require(['./components/Navbar.vue'], resolve),
+                sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+            },
+            meta: {
+                title: "Edit Vue OPD"
+            }
+        },
+        {
+            path: '/admin/vue-opd/root',
+            components: {
+                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.index.vue'], resolve),
+                navbar: resolve => require(['./components/Navbar.vue'], resolve),
+                sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+            },
+            meta: {
+                title: "Vue OPD"
+            }
+        },
+        {
+            path: '/admin/vue-opd/root/create',
+            components: {
+                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.add.vue'], resolve),
+                navbar: resolve => require(['./components/Navbar.vue'], resolve),
+                sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+            },
+            meta: {
+                title: "Add Vue OPD"
+            }
+        },
+        {
+            path: '/admin/vue-opd/root/:id',
+            components: {
+                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.show.vue'], resolve),
+                navbar: resolve => require(['./components/Navbar.vue'], resolve),
+                sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+            },
+            meta: {
+                title: "View Vue OPD"
+            }
+        },
+        {
+            path: '/admin/vue-opd/root/:id/edit',
+            components: {
+                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.edit.vue'], resolve),
+                navbar: resolve => require(['./components/Navbar.vue'], resolve),
+                sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+            },
+            meta: {
+                title: "Edit Vue OPD"
+            }
+        },
+        {
+            path: '/admin/vue-opd/child',
+            components: {
+                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.index.vue'], resolve),
+                navbar: resolve => require(['./components/Navbar.vue'], resolve),
+                sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+            },
+            meta: {
+                title: "Vue OPD"
+            }
+        },
+        {
+            path: '/admin/vue-opd/child/create',
+            components: {
+                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.add.vue'], resolve),
+                navbar: resolve => require(['./components/Navbar.vue'], resolve),
+                sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+            },
+            meta: {
+                title: "Add Vue OPD"
+            }
+        },
+        {
+            path: '/admin/vue-opd/child/:id',
+            components: {
+                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.show.vue'], resolve),
+                navbar: resolve => require(['./components/Navbar.vue'], resolve),
+                sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+            },
+            meta: {
+                title: "View Vue OPD"
+            }
+        },
+        {
+            path: '/admin/vue-opd/child/:id/edit',
             components: {
                 main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.edit.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
