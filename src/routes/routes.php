@@ -20,7 +20,7 @@ Route::group(['prefix' => 'api/vue-opd', 'middleware' => ['web']], function() {
     Route::delete('/{id}',      $controllers->destroy)->name('vue-opd.destroy');
 });
 
-Route::group(['prefix' => 'api/vue-opd/root', 'middleware' => ['web']], function() {
+Route::group(['prefix' => 'api/vue-opd-root', 'middleware' => ['web']], function() {
     $controllers = (object) [
         'index'     => 'Bantenprov\VueOpd\Http\Controllers\VueOpdRootController@index',
         'create'    => 'Bantenprov\VueOpd\Http\Controllers\VueOpdRootController@create',
@@ -40,7 +40,7 @@ Route::group(['prefix' => 'api/vue-opd/root', 'middleware' => ['web']], function
     Route::delete('/{id}',      $controllers->destroy)->name('vue-opd.root.destroy');
 });
 
-Route::group(['prefix' => 'api/vue-opd/child', 'middleware' => ['web']], function() {
+Route::group(['prefix' => 'api/vue-opd-child', 'middleware' => ['web']], function() {
     $controllers = (object) [
         'index'     => 'Bantenprov\VueOpd\Http\Controllers\VueOpdChildController@index',
         'create'    => 'Bantenprov\VueOpd\Http\Controllers\VueOpdChildController@create',
