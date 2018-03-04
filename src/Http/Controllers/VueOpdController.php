@@ -98,7 +98,7 @@ class VueOpdController extends Controller
         }
 
         $response['vue_opd'] = $vue_opd;
-        $response['status'] = true;
+        $response['loaded'] = true;
 
         return response()->json($response);
     }
@@ -125,7 +125,7 @@ class VueOpdController extends Controller
         $vue_opd = $this->vue_opd->findOrFail($id);
 
         $response['vue_opd'] = $vue_opd;
-        $response['status'] = true;
+        $response['loaded'] = true;
 
         return response()->json($response);
     }
@@ -141,7 +141,7 @@ class VueOpdController extends Controller
         $vue_opd = $this->vue_opd->findOrFail($id);
 
         $response['vue_opd'] = $vue_opd;
-        $response['status'] = true;
+        $response['loaded'] = true;
 
         return response()->json($response);
     }
@@ -169,9 +169,9 @@ class VueOpdController extends Controller
         $vue_opd = $this->vue_opd->findOrFail($id);
 
         if ($vue_opd->delete()) {
-            $response['status'] = true;
+            $response['loaded'] = true;
         } else {
-            $response['status'] = false;
+            $response['loaded'] = false;
         }
 
         return json_encode($response);

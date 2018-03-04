@@ -70,7 +70,7 @@ export default {
             description: this.model.description
           })
           .then(response => {
-            if (response.data.status == true) {
+            if (response.data.loaded == true) {
               if(response.data.message == 'success'){
                 alert(response.data.message);
                 app.back();

@@ -159,7 +159,7 @@ export default {
       if (confirm('Do you really want to delete it?')) {
         axios.delete('/api/vue-opd/' + rowData.id)
           .then(function(response) {
-            if (response.data.status == true) {
+            if (response.data.loaded == true) {
               app.$refs.vuetable.reload()
             } else {
               alert('Failed');

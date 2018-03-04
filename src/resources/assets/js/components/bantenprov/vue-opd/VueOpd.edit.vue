@@ -53,7 +53,7 @@ export default {
   mounted() {
     axios.get('api/vue-opd/' + this.$route.params.id + '/edit')
       .then(response => {
-        if (response.data.status == true) {
+        if (response.data.loaded == true) {
           this.model.label = response.data.vue_opd.label;
           this.model.old_label = response.data.vue_opd.label;
           this.model.description = response.data.vue_opd.description;
@@ -88,7 +88,7 @@ export default {
             old_label: this.model.old_label
           })
           .then(response => {
-            if (response.data.status == true) {
+            if (response.data.loaded == true) {
               if(response.data.message == 'success'){
                 alert(response.data.message);
                 app.back();
