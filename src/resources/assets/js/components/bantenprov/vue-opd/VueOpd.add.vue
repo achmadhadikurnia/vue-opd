@@ -88,8 +88,8 @@ export default {
     },
     reset() {
       this.model = {
-          label: "",
-          description: ""
+        label: "",
+        description: ""
       };
     },
     back() {
