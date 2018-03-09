@@ -108,7 +108,7 @@ export default {
     reset() {
       axios.get('api/vue-opd/' + this.$route.params.id + '/edit')
         .then(response => {
-          if (response.data.status == true) {
+          if (response.data.loaded == true) {
             this.model.label = response.data.vue_opd.label;
             this.model.description = response.data.vue_opd.description;
           } else {
