@@ -1,11 +1,11 @@
 <template>
   <div class="card">
     <div class="card-header">
-      <i class="fa fa-table" aria-hidden="true"></i> Vue OPD
+      <i class="fa fa-table" aria-hidden="true"></i> {{ title }}
 
       <ul class="nav nav-pills card-header-pills pull-right">
         <li class="nav-item">
-          <button class="btn btn-primary btn-sm" role="button" @click="createRow">
+          <button class="btn btn-primary btn-sm" role="button" @click="createRootRow">
           	<i class="fa fa-plus" aria-hidden="true"></i>
           </button>
         </li>
@@ -38,6 +38,9 @@
           @vuetable:loaded="onLoaded">
           <template slot="actions" slot-scope="props">
             <div class="btn-group pull-right" role="group" style="display:flex;">
+              <button class="btn btn-primary btn-sm" role="button" @click="createChildRow(props.rowData)" v-if="1 == props.rowData.levelunker < 5">
+                <span class="fa fa-plus"></span>
+              </button>
               <!--<button class="btn btn-info btn-sm" role="button" @click="viewRow(props.rowData)">
                 <span class="fa fa-eye"></span>
               </button>-->
@@ -83,6 +86,7 @@ export default {
   },
   data() {
     return {
+      title: 'Vue OPD',
       loading: true,
       fields: [
         {
@@ -144,8 +148,11 @@ export default {
     }
   },
   methods: {
-    createRow() {
+    createRootRow() {
       window.location = '#/admin/vue-opd/create';
+    },
+    createChildRow(rowData) {
+      window.location = '#/admin/vue-opd/' + rowData.id + '/create';
     },
     viewRow(rowData) {
       window.location = '#/admin/vue-opd/' + rowData.id;
@@ -159,7 +166,7 @@ export default {
       if (confirm('Do you really want to delete it?')) {
         axios.delete('/api/vue-opd/' + rowData.id)
           .then(function(response) {
-            if (response.data.status == true) {
+            if (response.data.loaded == true) {
               app.$refs.vuetable.reload()
             } else {
               alert('Failed');

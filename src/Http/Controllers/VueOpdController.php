@@ -5,7 +5,8 @@ namespace Bantenprov\VueOpd\Http\Controllers;
 /* Require */
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Bantenprov\BudgetAbsorption\Facades\VueOpdFacade;
+use Illuminate\Validation\Rule;
+use Bantenprov\VueOpd\Facades\VueOpdFacade;
 
 /* Models */
 use Bantenprov\VueOpd\Models\Bantenprov\VueOpd\VueOpd;
@@ -73,9 +74,37 @@ class VueOpdController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id = null)
     {
-        //
+        $vue_opd = $this->vue_opd;
+
+        if ($id == null) {
+            $vue_opd->id            = null;
+            $vue_opd->kunker        = null;
+            $vue_opd->name          = null;
+            $vue_opd->kunker_sinjab = null;
+            $vue_opd->kunker_simral = null;
+            $vue_opd->levelunker    = 1;
+            $vue_opd->njab          = null;
+            $vue_opd->npej          = null;
+
+            $response['vue_opd'] = $vue_opd;
+            $response['loaded'] = true;
+        } else {
+            $vue_opd->id            = null;
+            $vue_opd->kunker        = null;
+            $vue_opd->name          = null;
+            $vue_opd->kunker_sinjab = null;
+            $vue_opd->kunker_simral = null;
+            $vue_opd->levelunker    = $this->vue_opd->findOrFail($id)->levelunker + 1;
+            $vue_opd->njab          = null;
+            $vue_opd->npej          = null;
+
+            $response['vue_opd'] = $vue_opd;
+            $response['loaded'] = 1 == $vue_opd->levelunker < 5 ? true : false;
+        }
+
+        return response()->json($response);
     }
 
     /**
@@ -84,9 +113,71 @@ class VueOpdController extends Controller
      * @param  \App\VueOpd  $vue_opd
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id = null)
     {
-        //
+        $vue_opd = $this->vue_opd;
+
+        if ($id == null) {
+            $validator = Validator::make($request->all(), [
+                'kunker'            => 'required|numeric|digits:15|unique:vue_opds,kunker,NULL,id,deleted_at,NULL',
+                'name'              => 'required|max:255',
+                'kunker_sinjab'     => 'nullable|numeric|max:255',
+                'kunker_simral'     => 'nullable|numeric|max:255',
+                'levelunker'        => [
+                                        'required',
+                                        Rule::in([1]),
+                ],
+                'njab'              => 'required|max:255',
+                'npej'              => 'required|max:255',
+            ]);
+        } else {
+            $validator = Validator::make($request->all(), [
+                'kunker'            => 'required|numeric|digits:15|unique:vue_opds,kunker,NULL,id,deleted_at,NULL',
+                'name'              => 'required|max:255',
+                'kunker_sinjab'     => 'nullable|numeric|max:255',
+                'kunker_simral'     => 'nullable|numeric|max:255',
+                'levelunker'        => [
+                                        'required',
+                                        Rule::in([2,3,4,5]),
+                ],
+                'njab'              => 'required|max:255',
+                'npej'              => 'required|max:255',
+            ]);
+        }
+
+        if($validator->fails()){
+            $response['error'] = true;
+            $response['message'] = $validator->errors()->first();
+        } else {
+            if ($id == null) {
+                $vue_opd->kunker        = $request->kunker;
+                $vue_opd->name          = $request->name;
+                $vue_opd->kunker_sinjab = $request->kunker_sinjab;
+                $vue_opd->kunker_simral = $request->kunker_simral;
+                $vue_opd->levelunker    = 1;
+                $vue_opd->njab          = $request->njab;
+                $vue_opd->npej          = $request->npej;
+                // $vue_opd->parent_id     = null;
+                $vue_opd->save();
+            } else {
+                $vue_opd->kunker        = $request->kunker;
+                $vue_opd->name          = $request->name;
+                $vue_opd->kunker_sinjab = $request->kunker_sinjab;
+                $vue_opd->kunker_simral = $request->kunker_simral;
+                $vue_opd->levelunker    = $this->vue_opd->findOrFail($id)->levelunker + 1;
+                $vue_opd->njab          = $request->njab;
+                $vue_opd->npej          = $request->npej;
+                $vue_opd->parent_id     = $this->vue_opd->findOrFail($id)->id;
+                $vue_opd->save();
+            }
+
+            $response['error'] = false;
+            $response['message'] = 'Success';
+        }
+
+        $response['loaded'] = true;
+
+        return response()->json($response);
     }
 
     /**
@@ -97,7 +188,12 @@ class VueOpdController extends Controller
      */
     public function show($id)
     {
-        //
+        $vue_opd = $this->vue_opd->findOrFail($id);
+
+        $response['vue_opd'] = $vue_opd;
+        $response['loaded'] = true;
+
+        return response()->json($response);
     }
 
     /**
@@ -108,7 +204,12 @@ class VueOpdController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vue_opd = $this->vue_opd->findOrFail($id);
+
+        $response['vue_opd'] = $vue_opd;
+        $response['loaded'] = true;
+
+        return response()->json($response);
     }
 
     /**
@@ -120,7 +221,41 @@ class VueOpdController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $vue_opd = $this->vue_opd->findOrFail($id);
+
+        $validator = Validator::make($request->all(), [
+            'kunker'            => 'required|numeric|digits:15|unique:vue_opds,kunker,'.$id.',id,deleted_at,NULL',
+            'name'              => 'required|max:255',
+            'kunker_sinjab'     => 'nullable|numeric|max:255',
+            'kunker_simral'     => 'nullable|numeric|max:255',
+            'levelunker'        => [
+                                    'required',
+                                    Rule::in([1,2,3,4,5]),
+            ],
+            'njab'              => 'required|max:255',
+            'npej'              => 'required|max:255',
+        ]);
+
+        if($validator->fails()){
+            $response['error'] = true;
+            $response['message'] = $validator->errors()->first();
+        } else {
+            $vue_opd->kunker        = $request->kunker;
+            $vue_opd->name          = $request->name;
+            $vue_opd->kunker_sinjab = $request->kunker_sinjab;
+            $vue_opd->kunker_simral = $request->kunker_simral;
+            // $vue_opd->levelunker    = $request->levelunker;
+            $vue_opd->njab          = $request->njab;
+            $vue_opd->npej          = $request->npej;
+            $vue_opd->save();
+
+            $response['error'] = false;
+            $response['message'] = 'Success';
+        }
+
+        $response['loaded'] = true;
+
+        return response()->json($response);
     }
 
     /**
@@ -134,9 +269,9 @@ class VueOpdController extends Controller
         $vue_opd = $this->vue_opd->findOrFail($id);
 
         if ($vue_opd->delete()) {
-            $response['status'] = true;
+            $response['loaded'] = true;
         } else {
-            $response['status'] = false;
+            $response['loaded'] = false;
         }
 
         return json_encode($response);

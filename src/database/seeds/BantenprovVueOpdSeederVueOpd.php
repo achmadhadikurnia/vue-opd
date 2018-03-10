@@ -28,6 +28,7 @@ class BantenprovVueOpdSeederVueOpd extends Seeder
                     'id' => $vue_opd['id'],
                 ],
                 [
+                    'id' => $vue_opd['id'],
                     'kunker' => $vue_opd['kunker'],
                     'name' => $vue_opd['name'],
                     'kunker_sinjab' => $vue_opd['kunker_sinjab'],

@@ -1,5 +1,6 @@
 # Vue OPD
 
+[![Join the chat at https://gitter.im/vue-opd/Lobby](https://badges.gitter.im/vue-opd/Lobby.svg)](https://gitter.im/vue-opd/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/bantenprov/vue-opd/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/bantenprov/vue-opd/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/bantenprov/vue-opd/badges/build.png?b=master)](https://scrutinizer-ci.com/g/bantenprov/vue-opd/build-status/master)
 [![Latest Stable Version](https://poser.pugx.org/bantenprov/vue-opd/v/stable)](https://packagist.org/packages/bantenprov/vue-opd)
@@ -35,28 +36,56 @@ $ git clone https://github.com/bantenprov/vue-opd.git
 'providers' => [
 
     /*
-    * Laravel Framework Service Providers...
-    */
-    Illuminate\Auth\AuthServiceProvider::class,
-    Illuminate\Broadcasting\BroadcastServiceProvider::class,
-    Illuminate\Bus\BusServiceProvider::class,
-    Illuminate\Cache\CacheServiceProvider::class,
-    Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-    Illuminate\Cookie\CookieServiceProvider::class,
+     * Package Service Providers...
+     */
+    Laravel\Tinker\TinkerServiceProvider::class,
     //....
     Bantenprov\VueOpd\VueOpdServiceProvider::class,
+    Emadadly\LaravelUuid\LaravelUuidServiceProvider::class,
 ```
 
-#### Lakukan migrate :
+```php
+'aliases' => [
 
-```bash
-$ php artisan migrate
+    'App' => Illuminate\Support\Facades\App::class,
+    'Artisan' => Illuminate\Support\Facades\Artisan::class,
+    'Auth' => Illuminate\Support\Facades\Auth::class,
+    'Blade' => Illuminate\Support\Facades\Blade::class,
+    'Broadcast' => Illuminate\Support\Facades\Broadcast::class,
+    ...
+    'Opd' => Bantenprov\LaravelOpd\Facades\LaravelOpd::class,
 ```
 
-#### Publish database seeder :
+#### Publish vendor :
 
 ```bash
 $ php artisan vendor:publish --tag=vue-opd-seeds
+$ php artisan vendor:publish --tag=vue-opd-assets
+$ php artisan vendor:publish --tag=vue-opd-public
+$ php artisan vendor:publish --provider="Emadadly\LaravelUuid\LaravelUuidServiceProvider"
+```
+
+#### Edit config/uuid.php
+
+Change `'default_uuid_column' => 'uuid'` to `'default_uuid_column' => 'id'` like this
+
+```php
+'default_uuid_column' => 'id',
+```
+
+### Edit "vendor/kalnoy/nestedset/src/NestedSet.php"
+
+Change `$table->unsignedInteger(self::PARENT_ID)->nullable();` to `$table->string(self::PARENT_ID)->nullable();` like this
+
+```php
+public static function columns(Blueprint $table)
+{
+    $table->unsignedInteger(self::LFT)->default(0);
+    $table->unsignedInteger(self::RGT)->default(0);
+    $table->string(self::PARENT_ID)->nullable();
+
+    $table->index(static::getDefaultColumns());
+}
 ```
 
 #### Lakukan auto dump :
@@ -65,18 +94,18 @@ $ php artisan vendor:publish --tag=vue-opd-seeds
 $ composer dump-autoload
 ```
 
+#### Lakukan migrate :
+
+```bash
+$ php artisan migrate
+```
+
 #### Lakukan seeding :
 
 ```bash
 $ php artisan db:seed --class=BantenprovVueOpdSeeder
 ```
 
-#### Lakukan publish component vue :
-
-```bash
-$ php artisan vendor:publish --tag=vue-opd-assets
-$ php artisan vendor:publish --tag=vue-opd-public
-```
 #### Tambahkan route di dalam file : `resources/assets/js/routes.js` :
 
 ```javascript
@@ -128,7 +157,18 @@ $ php artisan vendor:publish --tag=vue-opd-public
                 sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
             },
             meta: {
-                title: "Add Vue OPD"
+                title: "Add Root Vue OPD"
+            }
+        },
+        {
+            path: '/admin/vue-opd/:id/create',
+            components: {
+                main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.add.vue'], resolve),
+                navbar: resolve => require(['./components/Navbar.vue'], resolve),
+                sidebar: resolve => require(['./components/Sidebar.vue'], resolve)
+            },
+            meta: {
+                title: "Add Child Vue OPD"
             }
         },
         {
