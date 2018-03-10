@@ -199,7 +199,7 @@ class VueOpdController extends Controller
             'kunker_simral'     => 'nullable|numeric|max:255',
             'levelunker'        => [
                                     'required',
-                                    Rule::in([1]),
+                                    Rule::in([1,2,3,4,5]),
             ],
             'njab'              => 'required|max:255',
             'npej'              => 'required|max:255',
