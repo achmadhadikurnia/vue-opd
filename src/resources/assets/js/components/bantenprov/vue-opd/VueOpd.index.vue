@@ -5,7 +5,7 @@
 
       <ul class="nav nav-pills card-header-pills pull-right">
         <li class="nav-item">
-          <button class="btn btn-primary btn-sm" role="button" @click="createRow">
+          <button class="btn btn-primary btn-sm" role="button" @click="createRootRow">
           	<i class="fa fa-plus" aria-hidden="true"></i>
           </button>
         </li>
@@ -38,6 +38,9 @@
           @vuetable:loaded="onLoaded">
           <template slot="actions" slot-scope="props">
             <div class="btn-group pull-right" role="group" style="display:flex;">
+              <button class="btn btn-primary btn-sm" role="button" @click="createChildRow(props.rowData)">
+                <span class="fa fa-plus"></span>
+              </button>
               <!--<button class="btn btn-info btn-sm" role="button" @click="viewRow(props.rowData)">
                 <span class="fa fa-eye"></span>
               </button>-->
@@ -145,8 +148,11 @@ export default {
     }
   },
   methods: {
-    createRow() {
+    createRootRow() {
       window.location = '#/admin/vue-opd/create';
+    },
+    createChildRow(rowData) {
+      window.location = '#/admin/vue-opd/create/' + rowData.id;
     },
     viewRow(rowData) {
       window.location = '#/admin/vue-opd/' + rowData.id;
