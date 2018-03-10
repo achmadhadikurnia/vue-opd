@@ -139,15 +139,15 @@ export default {
   data() {
     return {
       state: {},
-      title: "Edit Vue OPD",
+      title: 'Edit Vue OPD',
       model: {
-        kunker        : "",
-        name          : "",
-        kunker_sinjab : "",
-        kunker_simral : "",
-        levelunker    : "",
-        njab          : "",
-        npej          : ""
+        kunker        : '',
+        name          : '',
+        kunker_sinjab : '',
+        kunker_simral : '',
+        levelunker    : '',
+        njab          : '',
+        npej          : ''
       }
     }
   },

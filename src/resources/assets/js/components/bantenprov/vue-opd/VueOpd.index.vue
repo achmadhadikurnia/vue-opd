@@ -38,7 +38,7 @@
           @vuetable:loaded="onLoaded">
           <template slot="actions" slot-scope="props">
             <div class="btn-group pull-right" role="group" style="display:flex;">
-              <button class="btn btn-primary btn-sm" role="button" @click="createChildRow(props.rowData)">
+              <button class="btn btn-primary btn-sm" role="button" @click="createChildRow(props.rowData)" v-if="1 == props.rowData.levelunker < 5">
                 <span class="fa fa-plus"></span>
               </button>
               <!--<button class="btn btn-info btn-sm" role="button" @click="viewRow(props.rowData)">
@@ -86,7 +86,7 @@ export default {
   },
   data() {
     return {
-      title : "Vue OPD",
+      title: 'Vue OPD',
       loading: true,
       fields: [
         {
@@ -152,7 +152,7 @@ export default {
       window.location = '#/admin/vue-opd/create';
     },
     createChildRow(rowData) {
-      window.location = '#/admin/vue-opd/create/' + rowData.id;
+      window.location = '#/admin/vue-opd/' + rowData.id + '/create';
     },
     viewRow(rowData) {
       window.location = '#/admin/vue-opd/' + rowData.id;

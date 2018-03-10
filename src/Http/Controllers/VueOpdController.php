@@ -6,7 +6,7 @@ namespace Bantenprov\VueOpd\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
-use Bantenprov\BudgetAbsorption\Facades\VueOpdFacade;
+use Bantenprov\VueOpd\Facades\VueOpdFacade;
 
 /* Models */
 use Bantenprov\VueOpd\Models\Bantenprov\VueOpd\VueOpd;
@@ -87,6 +87,9 @@ class VueOpdController extends Controller
             $vue_opd->levelunker    = 1;
             $vue_opd->njab          = null;
             $vue_opd->npej          = null;
+
+            $response['vue_opd'] = $vue_opd;
+            $response['loaded'] = true;
         } else {
             $vue_opd->id            = null;
             $vue_opd->kunker        = null;
@@ -96,10 +99,10 @@ class VueOpdController extends Controller
             $vue_opd->levelunker    = $this->vue_opd->findOrFail($id)->levelunker + 1;
             $vue_opd->njab          = null;
             $vue_opd->npej          = null;
-        }
 
-        $response['vue_opd'] = $vue_opd;
-        $response['loaded'] = true;
+            $response['vue_opd'] = $vue_opd;
+            $response['loaded'] = 1 == $vue_opd->levelunker < 5 ? true : false;
+        }
 
         return response()->json($response);
     }

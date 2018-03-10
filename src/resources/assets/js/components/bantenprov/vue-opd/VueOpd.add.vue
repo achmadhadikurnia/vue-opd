@@ -137,9 +137,11 @@
 <script>
 export default {
   data() {
+    var type = this.$route.params.id ? 'Child' : 'Root';
+
     return {
       state: {},
-      title: "Add Root Vue OPD",
+      title: 'Add  ' + type + ' Vue OPD',
       model: {
         kunker        : "",
         name          : "",
@@ -152,7 +154,9 @@ export default {
     }
   },
   mounted() {
-    axios.get('api/vue-opd/create')
+    var type = this.$route.params.id ? '/' + this.$route.params.id : '';
+
+    axios.get('api/vue-opd' + type + '/create')
       .then(response => {
         if (response.data.loaded == true) {
           this.model.kunker         = response.data.vue_opd.kunker;
@@ -205,7 +209,9 @@ export default {
       }
     },
     reset() {
-      axios.get('api/vue-opd/create')
+      var type = this.$route.params.id ? '/' + this.$route.params.id : '';
+
+      axios.get('api/vue-opd' + type + '/create')
         .then(response => {
           if (response.data.loaded == true) {
             this.model.kunker         = response.data.vue_opd.kunker;

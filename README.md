@@ -161,7 +161,7 @@ $ php artisan db:seed --class=BantenprovVueOpdSeeder
             }
         },
         {
-            path: '/admin/vue-opd/create/:id',
+            path: '/admin/vue-opd/:id/create',
             components: {
                 main: resolve => require(['./components/bantenprov/vue-opd/VueOpd.add.vue'], resolve),
                 navbar: resolve => require(['./components/Navbar.vue'], resolve),
