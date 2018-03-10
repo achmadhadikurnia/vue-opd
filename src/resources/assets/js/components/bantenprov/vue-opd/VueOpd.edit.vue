@@ -139,15 +139,15 @@ export default {
   data() {
     return {
       state: {},
-      title : "Edit Vue OPD",
+      title: "Edit Vue OPD",
       model: {
-        kunker: "",
-        name: "",
-        kunker_sinjab: "",
-        kunker_simral: "",
-        levelunker: "",
-        njab: "",
-        npej: ""
+        kunker        : "",
+        name          : "",
+        kunker_sinjab : "",
+        kunker_simral : "",
+        levelunker    : "",
+        njab          : "",
+        npej          : ""
       }
     }
   },
@@ -155,13 +155,13 @@ export default {
     axios.get('api/vue-opd/' + this.$route.params.id + '/edit')
       .then(response => {
         if (response.data.loaded == true) {
-          this.model.kunker = response.data.vue_opd.kunker;
-          this.model.name = response.data.vue_opd.name;
-          this.model.kunker_sinjab = response.data.vue_opd.kunker_sinjab;
-          this.model.kunker_simral = response.data.vue_opd.kunker_simral;
-          this.model.levelunker = response.data.vue_opd.levelunker;
-          this.model.njab = response.data.vue_opd.njab;
-          this.model.npej = response.data.vue_opd.npej;
+          this.model.kunker         = response.data.vue_opd.kunker;
+          this.model.name           = response.data.vue_opd.name;
+          this.model.kunker_sinjab  = response.data.vue_opd.kunker_sinjab;
+          this.model.kunker_simral  = response.data.vue_opd.kunker_simral;
+          this.model.levelunker     = response.data.vue_opd.levelunker;
+          this.model.njab           = response.data.vue_opd.njab;
+          this.model.npej           = response.data.vue_opd.npej;
         } else {
           alert('Failed');
         }
@@ -179,13 +179,13 @@ export default {
         return;
       } else {
         axios.put('api/vue-opd/' + this.$route.params.id, {
-            kunker: this.model.kunker,
-            name: this.model.name,
-            kunker_sinjab: this.model.kunker_sinjab,
-            kunker_simral: this.model.kunker_simral,
-            levelunker: this.model.levelunker,
-            njab: this.model.njab,
-            npej: this.model.npej
+            kunker        : this.model.kunker,
+            name          : this.model.name,
+            kunker_sinjab : this.model.kunker_sinjab,
+            kunker_simral : this.model.kunker_simral,
+            levelunker    : this.model.levelunker,
+            njab          : this.model.njab,
+            npej          : this.model.npej
           })
           .then(response => {
             if (response.data.loaded == true) {
@@ -208,13 +208,13 @@ export default {
       axios.get('api/vue-opd/' + this.$route.params.id + '/edit')
         .then(response => {
           if (response.data.loaded == true) {
-            this.model.kunker = response.data.vue_opd.kunker;
-            this.model.name = response.data.vue_opd.name;
-            this.model.kunker_sinjab = response.data.vue_opd.kunker_sinjab;
-            this.model.kunker_simral = response.data.vue_opd.kunker_simral;
-            this.model.levelunker = response.data.vue_opd.levelunker;
-            this.model.njab = response.data.vue_opd.njab;
-            this.model.npej = response.data.vue_opd.npej;
+            this.model.kunker         = response.data.vue_opd.kunker;
+            this.model.name           = response.data.vue_opd.name;
+            this.model.kunker_sinjab  = response.data.vue_opd.kunker_sinjab;
+            this.model.kunker_simral  = response.data.vue_opd.kunker_simral;
+            this.model.levelunker     = response.data.vue_opd.levelunker;
+            this.model.njab           = response.data.vue_opd.njab;
+            this.model.npej           = response.data.vue_opd.npej;
           } else {
             alert('Failed');
           }
