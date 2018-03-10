@@ -115,7 +115,7 @@ class VueOpdController extends Controller
         $vue_opd = $this->vue_opd;
 
         $validator = Validator::make($request->all(), [
-            'kunker'            => 'required|numeric|digits:15|unique:vue_opds,kunker',
+            'kunker'            => 'required|numeric|digits:15|unique:vue_opds,kunker,NULL,id,deleted_at,NULL',
             'name'              => 'required|max:255',
             'kunker_sinjab'     => 'nullable|numeric|max:255',
             'kunker_simral'     => 'nullable|numeric|max:255',
