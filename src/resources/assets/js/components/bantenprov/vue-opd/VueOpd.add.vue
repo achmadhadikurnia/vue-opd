@@ -81,6 +81,7 @@
 
             <div class="col-sm-10">
               <input type="text" class="form-control-plaintext" id="model-levelunker" v-model="model.levelunker" name="levelunker" placeholder="Level Unit Kerja" required disabled>
+              <input type="hidden" v-model="model.levelunker" name="levelunker">
 
               <field-messages name="levelunker" show="$invalid && $submitted" class="text-danger">
                 <small class="form-text text-success">Looks good!</small>
@@ -95,7 +96,7 @@
             <label for="model-njab" class="col-sm-2 col-form-label">Nama Jabatan</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-njab" v-model="model.njab" name="njab" placeholder="Nama Jabatan" required>
+              <input type="text" class="form-control" id="model-njab" v-model="model.njab" name="njab" placeholder="Nama Jabatan">
 
               <field-messages name="njab" show="$invalid && $submitted" class="text-danger">
                 <small class="form-text text-success">Looks good!</small>
@@ -110,7 +111,7 @@
             <label for="model-npej" class="col-sm-2 col-form-label">Nama Pejabat</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-npej" v-model="model.npej" name="npej" placeholder="Nama Pejabat" required>
+              <input type="text" class="form-control" id="model-npej" v-model="model.npej" name="npej" placeholder="Nama Pejabat">
 
               <field-messages name="npej" show="$invalid && $submitted" class="text-danger">
                 <small class="form-text text-success">Looks good!</small>
@@ -188,18 +189,18 @@ export default {
           })
           .then(response => {
             if (response.data.loaded == true) {
-              if(response.data.message == 'success'){
+              if(response.data.error == false){
                 alert(response.data.message);
                 app.back();
               }else{
                 alert(response.data.message);
               }
             } else {
-              alert(response.data.message);
+              alert('Failed');
             }
           })
           .catch(function(response) {
-            alert('Break ' + response.data.message);
+            alert('Break');
           });
       }
     },
