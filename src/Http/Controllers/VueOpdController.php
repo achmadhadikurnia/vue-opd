@@ -193,7 +193,7 @@ class VueOpdController extends Controller
         $vue_opd = $this->vue_opd->findOrFail($id);
 
         $validator = Validator::make($request->all(), [
-            'kunker'            => 'required|numeric|digits:15|unique:vue_opds,kunker,'.$id,
+            'kunker'            => 'required|numeric|digits:15|unique:vue_opds,kunker,'.$id.',id,deleted_at,NULL',
             'name'              => 'required|max:255',
             'kunker_sinjab'     => 'nullable|numeric|max:255',
             'kunker_simral'     => 'nullable|numeric|max:255',
