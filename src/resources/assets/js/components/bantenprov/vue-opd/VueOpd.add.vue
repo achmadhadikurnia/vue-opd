@@ -16,117 +16,86 @@
       <vue-form :state="state" @submit.prevent="onSubmit">
 
         <validate tag="div">
-          <div class="form-group row">
-            <label for="model-kunker" class="col-sm-2 col-form-label">Kode Unit Kerja</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-kunker" v-model="model.kunker" name="kunker" placeholder="Kode Unit Kerja" required autofocus>
-
-              <field-messages name="kunker" show="$invalid && $submitted" class="text-danger">
-                <small class="form-text text-success">Looks good!</small>
-                <small class="form-text text-danger" slot="required">This field is a required field</small>
-              </field-messages>
-            </div>
+          <div class="form-group">
+            <label for="model-kunker">Kode Unit Kerja</label>
+            <input type="text" class="form-control" id="model-kunker" v-model="model.kunker" name="kunker" placeholder="Kode Unit Kerja" required autofocus>
+            <field-messages name="kunker" show="$invalid && $submitted" class="text-danger">
+              <small class="form-text text-success">Looks good!</small>
+              <small class="form-text text-danger" slot="required">This field is a required field</small>
+            </field-messages>
           </div>
         </validate>
 
         <validate tag="div">
-          <div class="form-group row">
-            <label for="model-name" class="col-sm-2 col-form-label">Nama Unit Kerja</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-name" v-model="model.name" name="name" placeholder="Nama Unit Kerja" required>
-
-              <field-messages name="name" show="$invalid && $submitted" class="text-danger">
-                <small class="form-text text-success">Looks good!</small>
-                <small class="form-text text-danger" slot="required">This field is a required field</small>
-              </field-messages>
-            </div>
+          <div class="form-group">
+            <label for="model-name">Nama Unit Kerja</label>
+            <input type="text" class="form-control" id="model-name" v-model="model.name" name="name" placeholder="Nama Unit Kerja" required>
+            <field-messages name="name" show="$invalid && $submitted" class="text-danger">
+              <small class="form-text text-success">Looks good!</small>
+              <small class="form-text text-danger" slot="required">This field is a required field</small>
+            </field-messages>
           </div>
         </validate>
 
         <validate tag="div">
-          <div class="form-group row">
-            <label for="model-kunker_sinjab" class="col-sm-2 col-form-label">Kode Unit Kerja Sinjab</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-kunker_sinjab" v-model="model.kunker_sinjab" name="kunker_sinjab" placeholder="Kode Unit Kerja Sinjab">
-
-              <field-messages name="kunker_sinjab" show="$invalid && $submitted" class="text-danger">
-                <small class="form-text text-success">Looks good!</small>
-                <small class="form-text text-danger" slot="required">This field is a required field</small>
-              </field-messages>
-            </div>
+          <div class="form-group">
+            <label for="model-kunker_sinjab">Kode Unit Kerja Sinjab</label>
+            <input type="text" class="form-control" id="model-kunker_sinjab" v-model="model.kunker_sinjab" name="kunker_sinjab" placeholder="Kode Unit Kerja Sinjab">
+            <field-messages name="kunker_sinjab" show="$invalid && $submitted" class="text-danger">
+              <small class="form-text text-success">Looks good!</small>
+              <small class="form-text text-danger" slot="required">This field is a required field</small>
+            </field-messages>
           </div>
         </validate>
 
         <validate tag="div">
-          <div class="form-group row">
-            <label for="model-kunker_simral" class="col-sm-2 col-form-label">Kode Unit Kerja Simral</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-kunker_simral" v-model="model.kunker_simral" name="kunker_simral" placeholder="Kode Unit Kerja Simral">
-
-              <field-messages name="kunker_simral" show="$invalid && $submitted" class="text-danger">
-                <small class="form-text text-success">Looks good!</small>
-                <small class="form-text text-danger" slot="required">This field is a required field</small>
-              </field-messages>
-            </div>
+          <div class="form-group">
+            <label for="model-kunker_simral">Kode Unit Kerja Simral</label>
+            <input type="text" class="form-control" id="model-kunker_simral" v-model="model.kunker_simral" name="kunker_simral" placeholder="Kode Unit Kerja Simral">
+            <field-messages name="kunker_simral" show="$invalid && $submitted" class="text-danger">
+              <small class="form-text text-success">Looks good!</small>
+              <small class="form-text text-danger" slot="required">This field is a required field</small>
+            </field-messages>
           </div>
         </validate>
 
         <validate tag="div">
-          <div class="form-group row">
-            <label for="model-levelunker" class="col-sm-2 col-form-label">Level Unit Kerja</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control-plaintext" id="model-levelunker" v-model="model.levelunker" name="levelunker" placeholder="Level Unit Kerja" required disabled>
-              <input type="hidden" v-model="model.levelunker" name="levelunker">
-
-              <field-messages name="levelunker" show="$invalid && $submitted" class="text-danger">
-                <small class="form-text text-success">Looks good!</small>
-                <small class="form-text text-danger" slot="required">This field is a required field</small>
-              </field-messages>
-            </div>
+          <div class="form-group">
+            <label for="model-levelunker">Level Unit Kerja</label>
+            <input type="text" class="form-control-plaintext" id="model-levelunker" v-model="model.levelunker" name="levelunker" placeholder="Level Unit Kerja" required disabled>
+            <input type="hidden" v-model="model.levelunker" name="levelunker">
+            <field-messages name="levelunker" show="$invalid && $submitted" class="text-danger">
+              <small class="form-text text-success">Looks good!</small>
+              <small class="form-text text-danger" slot="required">This field is a required field</small>
+            </field-messages>
           </div>
         </validate>
 
         <validate tag="div">
-          <div class="form-group row">
-            <label for="model-njab" class="col-sm-2 col-form-label">Nama Jabatan</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-njab" v-model="model.njab" name="njab" placeholder="Nama Jabatan" required>
-
-              <field-messages name="njab" show="$invalid && $submitted" class="text-danger">
-                <small class="form-text text-success">Looks good!</small>
-                <small class="form-text text-danger" slot="required">This field is a required field</small>
-              </field-messages>
-            </div>
+          <div class="form-group">
+            <label for="model-njab">Nama Jabatan</label>
+            <input type="text" class="form-control" id="model-njab" v-model="model.njab" name="njab" placeholder="Nama Jabatan" required>
+            <field-messages name="njab" show="$invalid && $submitted" class="text-danger">
+              <small class="form-text text-success">Looks good!</small>
+              <small class="form-text text-danger" slot="required">This field is a required field</small>
+            </field-messages>
           </div>
         </validate>
 
         <validate tag="div">
-          <div class="form-group row">
-            <label for="model-npej" class="col-sm-2 col-form-label">Nama Pejabat</label>
-
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-npej" v-model="model.npej" name="npej" placeholder="Nama Pejabat" required>
-
-              <field-messages name="npej" show="$invalid && $submitted" class="text-danger">
-                <small class="form-text text-success">Looks good!</small>
-                <small class="form-text text-danger" slot="required">This field is a required field</small>
-              </field-messages>
-            </div>
+          <div class="form-group">
+            <label for="model-npej">Nama Pejabat</label>
+            <input type="text" class="form-control" id="model-npej" v-model="model.npej" name="npej" placeholder="Nama Pejabat" required>
+            <field-messages name="npej" show="$invalid && $submitted" class="text-danger">
+              <small class="form-text text-success">Looks good!</small>
+              <small class="form-text text-danger" slot="required">This field is a required field</small>
+            </field-messages>
           </div>
         </validate>
 
-        <div class="form-group row">
-          <div class="col-sm-10 offset-sm-2">
-            <button type="submit" class="btn btn-primary">Submit</button>
-
-            <button type="reset" class="btn btn-secondary" @click="reset">Reset</button>
-          </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="reset" class="btn btn-secondary" @click="reset">Reset</button>
         </div>
 
       </vue-form>
