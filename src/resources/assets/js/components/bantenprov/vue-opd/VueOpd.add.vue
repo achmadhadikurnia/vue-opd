@@ -50,7 +50,7 @@
             <label for="model-kunker_sinjab" class="col-sm-2 col-form-label">Kode Unit Kerja Sinjab</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-kunker_sinjab" v-model="model.kunker_sinjab" name="kunker_sinjab" placeholder="Kode Unit Kerja Sinjab" required>
+              <input type="text" class="form-control" id="model-kunker_sinjab" v-model="model.kunker_sinjab" name="kunker_sinjab" placeholder="Kode Unit Kerja Sinjab">
 
               <field-messages name="kunker_sinjab" show="$invalid && $submitted" class="text-danger">
                 <small class="form-text text-success">Looks good!</small>
@@ -65,7 +65,7 @@
             <label for="model-kunker_simral" class="col-sm-2 col-form-label">Kode Unit Kerja Simral</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-kunker_simral" v-model="model.kunker_simral" name="kunker_simral" placeholder="Kode Unit Kerja Simral" required>
+              <input type="text" class="form-control" id="model-kunker_simral" v-model="model.kunker_simral" name="kunker_simral" placeholder="Kode Unit Kerja Simral">
 
               <field-messages name="kunker_simral" show="$invalid && $submitted" class="text-danger">
                 <small class="form-text text-success">Looks good!</small>
@@ -96,7 +96,7 @@
             <label for="model-njab" class="col-sm-2 col-form-label">Nama Jabatan</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-njab" v-model="model.njab" name="njab" placeholder="Nama Jabatan">
+              <input type="text" class="form-control" id="model-njab" v-model="model.njab" name="njab" placeholder="Nama Jabatan" required>
 
               <field-messages name="njab" show="$invalid && $submitted" class="text-danger">
                 <small class="form-text text-success">Looks good!</small>
@@ -111,7 +111,7 @@
             <label for="model-npej" class="col-sm-2 col-form-label">Nama Pejabat</label>
 
             <div class="col-sm-10">
-              <input type="text" class="form-control" id="model-npej" v-model="model.npej" name="npej" placeholder="Nama Pejabat">
+              <input type="text" class="form-control" id="model-npej" v-model="model.npej" name="npej" placeholder="Nama Pejabat" required>
 
               <field-messages name="npej" show="$invalid && $submitted" class="text-danger">
                 <small class="form-text text-success">Looks good!</small>
@@ -182,7 +182,9 @@ export default {
       if (this.state.$invalid) {
         return;
       } else {
-        axios.post('api/vue-opd', {
+        var type = this.$route.params.id ? '/' + this.$route.params.id : '';
+
+        axios.post('api/vue-opd' + type, {
             kunker        : this.model.kunker,
             name          : this.model.name,
             kunker_sinjab : this.model.kunker_sinjab,
