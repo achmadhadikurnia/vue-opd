@@ -28,17 +28,17 @@ class BantenprovVueOpdSeederVueOpd extends Seeder
                     'id' => $vue_opd['id'],
                 ],
                 [
-                    'id' => $vue_opd['id'],
-                    'kunker' => $vue_opd['kunker'],
-                    'name' => $vue_opd['name'],
+                    'id'            => $vue_opd['id'],
+                    'kunker'        => $vue_opd['kunker'],
+                    'name'          => $vue_opd['name'],
                     'kunker_sinjab' => $vue_opd['kunker_sinjab'],
                     'kunker_simral' => $vue_opd['kunker_simral'],
-                    'levelunker' => $vue_opd['levelunker'],
-                    'njab' => $vue_opd['njab'],
-                    'npej' => $vue_opd['npej'],
-                    '_lft' => $vue_opd['_lft'],
-                    '_rgt' => $vue_opd['_rgt'],
-                    'parent_id' => $vue_opd['parent_id'],
+                    'levelunker'    => $vue_opd['levelunker'],
+                    'njab'          => $vue_opd['njab'],
+                    'npej'          => $vue_opd['npej'],
+                    '_lft'          => $vue_opd['_lft'],
+                    '_rgt'          => $vue_opd['_rgt'],
+                    'parent_id'     => $vue_opd['parent_id'],
                 ]
             );
             $model->save();
