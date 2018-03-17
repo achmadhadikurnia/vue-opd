@@ -19,14 +19,12 @@
     },
     "require": {
         "php": ">=5.6.4",
+        "doctrine/dbal": "^2.6",
         "emadadly/laravel-uuid": "^1.2",
         "illuminate/support": "5.4.*",
         "kalnoy/nestedset": "^4.3",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0"
-    },
-    "require-dev": {
-        "doctrine/dbal": "^2.5"
     },
     "autoload": {
         "files": [
