@@ -11,6 +11,6 @@ class BantenprovVueOpdSeeder extends Seeder
      */
     public function run()
     {
-         $this->call(BantenprovVueOpdSeederVueOpd::class);
+        $this->call(BantenprovVueOpdSeederVueOpd::class);
     }
 }
